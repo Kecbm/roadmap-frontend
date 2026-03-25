@@ -1,11 +1,11 @@
-// SISTEMA DE TIPOS
+// 🚀 SISTEMA DE TIPOS
 
-// GENERICS
+// 👩🏾‍🚀 GENERICS
 /*
   Pode ser compreendido como "variáveis para tipos". Permite a criação de componentes que podem funcionar com vários tipos, em vez de um único tipo.
 */
 
-// Funções genéricas
+// ✨ Funções genéricas
 /*
     O <T> captura o tipo do argumento passado
 */
@@ -16,7 +16,7 @@ function retornarArray<T>(item: T): T[] {
 const num = retornarArray(10); // T vira number
 const str = retornarArray("Olá"); // T vira string
 
-// Interfaces genéricas
+// ✨ Interfaces genéricas
 /*
     Define a estrutura de objetos que podem ter diferentes tipos de dados
 */
@@ -30,7 +30,7 @@ const usuario: RetornoAPI<{ nome: string }> = {
     dados: { nome: 'Gato' }
 }
 
-// Classes genéricas
+// ✨ Classes genéricas
 /*
     Permite que a classe lide com propriedades e métodos de tipos variados
 */
@@ -44,7 +44,7 @@ class Pilha<T> {
 
 const pilhaDeIdades = new Pilha<number>();
 
-// Constraints (restrições) com extends
+// ✨ Constraints (restrições) com extends
 /*
     Quando você não quer aceitar qualquer tipo, mas apenas tipos que possuam uma propriedade específica
 */
@@ -59,18 +59,18 @@ function logComprimento<T extends TemComprimento>(arg: T): void {
 logComprimento("String"); // String tem length
 // logComprimento(10) // Number não tem length
 
-// CONDITIONAL TYPES
+// 👩🏾‍🚀 CONDITIONAL TYPES
 /*
   Permite a criação de uma lógica dentro do sistemas de tipos, semelhante ao if/else. A sintaxe é a mesma do operador ternário em JavaScript: `T extends U ? X : Y`
 */
 
-// Filtro de tipos
+// ✨ Filtro de tipos
 type ValidacaoDeEntrada<T> = T extends string ? string : number;
 
 const entrada1: ValidacaoDeEntrada<string> = "IA"; // O tipo é string
 const entrada2: ValidacaoDeEntrada<number> = 20; // O tipo é number
 
-// Utilizando o `never` para filtrar
+// ✨ Utilizando o `never` para filtrar
 /*
   Condicionais para remover tipos indesejados. Se a condição cair em `never`, o TypeScript ignora o tipo
 */
@@ -78,7 +78,7 @@ type ApenasNumber<T> = T extends number ? T : never;
 
 type Resultado = ApenasNumber<string | number | boolean>; // Resultado é apenas 'number', pois string e boolean caíram no 'never'
 
-// Inferência com `infer`
+// ✨ Inferência com `infer`
 /*
   Permite a extração de um tipo dentro de outro
 */
@@ -92,6 +92,18 @@ type TipoDeRetorno = RetornaTipo<typeof frase>; // O tipo inferido é string
 
 // Resumo: "Se T for uma função, pegue o que ela devolve, chame de R e me entrege. Se não for uma função, não me entregue nada (`never`)"
 
-// MAPPED TYPES
+// 👩🏾‍🚀 MAPPED TYPES
+/*
+  Pode ser considerado o `map()` do TypeScript. Permite selecionar um tipo existente e transformar suas propriedades. Como se fosse uma fórmula aplicada a todas as chaves de um objeto
+*/
 
-// TEMPLATE LITERAL TYPES
+// ✨ Sintaxe básica
+type MeuTipoMapeado<T> = {
+    [P in keyof T]: number; // NovoTipo
+}
+
+// `keyof T`: todas as chaves do tipo T
+// `P in ...`: percorre cada uma dessas chaves
+// NovoTipo: Define qual será o novo tipo de cada propriedade
+
+// 👩🏾‍🚀 TEMPLATE LITERAL TYPES
