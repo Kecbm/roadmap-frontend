@@ -126,3 +126,12 @@ const monitoramento: CamposEditados<Usuario> = {
 /*
   É uma funcionalidade que permite usar a sintaxe de string do JavaScript para construir tipos de strings personalizado
 */
+
+// ✨ Sintaxe básica
+type Status = "sucesso" | "erro";
+
+// Cria o tipo: "id-sucesso" | "id-erro"
+type Identificador = `id-${Status}`;
+
+let meuId: Identificador = "id-sucesso"; // Correto
+// leu meuId: Identificador = "id-pendente"; // Errado
