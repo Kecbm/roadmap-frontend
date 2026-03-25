@@ -104,6 +104,22 @@ type MeuTipoMapeado<T> = {
 
 // `keyof T`: todas as chaves do tipo T
 // `P in ...`: percorre cada uma dessas chaves
-// NovoTipo: Define qual será o novo tipo de cada propriedade
+// `NovoTipo`: Define qual será o novo tipo de cada propriedade
+
+// ✨ Exemplo
+// Controle para saber quais campos foram editados
+interface Usuario {
+    nome: string;
+    idade: number;
+}
+
+type CamposEditados<T> = {
+    [P in keyof T]: boolean;
+}
+
+const monitoramento: CamposEditados<Usuario> = {
+    nome: true,
+    idade: false
+}
 
 // 👩🏾‍🚀 TEMPLATE LITERAL TYPES
