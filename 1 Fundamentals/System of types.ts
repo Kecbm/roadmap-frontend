@@ -123,3 +123,6 @@ const monitoramento: CamposEditados<Usuario> = {
 }
 
 // 👩🏾‍🚀 TEMPLATE LITERAL TYPES
+/*
+  É uma funcionalidade que permite usar a sintaxe de string do JavaScript para construir tipos de strings personalizado
+*/
