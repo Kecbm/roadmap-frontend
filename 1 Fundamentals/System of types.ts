@@ -60,6 +60,9 @@ logComprimento("String"); // String tem length
 // logComprimento(10) // Number não tem length
 
 // CONDITIONAL TYPES
+/*
+  Permite a criação de uma lógica dentro do sistemas de tipos, semelhante ao if/else. A sintaxe é a mesma do operador ternário em JavaScript: `T extends U ? X : Y`
+*/
 
 // MAPPED TYPES
 
