@@ -78,6 +78,20 @@ type ApenasNumber<T> = T extends number ? T : never;
 
 type Resultado = ApenasNumber<string | number | boolean>; // Resultado é apenas 'number', pois string e boolean caíram no 'never'
 
+// Inferência com `infer`
+/*
+  Permite a extração de um tipo dentro de outro
+*/
+type RetornaTipo<T> = T extends (...args: any[]) => infer R ? R : never;
+
+function frase() {
+    return "Estudando TypeScript";
+}
+
+type TipoDeRetorno = RetornaTipo<typeof frase>; // O tipo inferido é string
+
+// Resumo: "Se T for uma função, pegue o que ela devolve, chame de R e me entrege. Se não for uma função, não me entregue nada (`never`)"
+
 // MAPPED TYPES
 
 // TEMPLATE LITERAL TYPES
