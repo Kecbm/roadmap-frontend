@@ -30,6 +30,20 @@ const usuario: RetornoAPI<{ nome: string }> = {
     dados: { nome: 'Gato' }
 }
 
+// Classes genéricas
+/*
+    Permite que a classe lide com propriedades e métodos de tipos variados
+*/
+class Pilha<T> {
+    private itens: T[] = [];
+
+    adicionar(item: T) {
+        this.itens.push(item);
+    }
+}
+
+const pilhaDeIdades = new Pilha<number>();
+
 // CONDITIONAL TYPES
 
 // MAPPED TYPES
