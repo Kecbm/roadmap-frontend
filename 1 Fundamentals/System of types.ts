@@ -6,6 +6,16 @@
 */
 
 // Funções genéricas
+/*
+    O <T> captura o tipo do argumento passado
+*/
+function retornarArray<T>(item: T): T[] {
+    return [item];
+}
+
+const num = retornarArray(10); // T vira number
+const str = retornarArray("Olá"); // T vira string
+
 
 // CONDITIONAL TYPES
 
