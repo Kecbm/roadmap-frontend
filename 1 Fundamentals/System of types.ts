@@ -44,6 +44,21 @@ class Pilha<T> {
 
 const pilhaDeIdades = new Pilha<number>();
 
+// Constraints (restrições) com extends
+/*
+    Quando você não quer aceitar qualquer tipo, mas apenas tipos que possuam uma propriedade específica
+*/
+interface TemComprimento {
+    length: number;
+}
+
+function logComprimento<T extends TemComprimento>(arg: T): void {
+    console.log(arg.length)
+}
+
+logComprimento("String"); // String tem length
+// logComprimento(10) // Number não tem length
+
 // CONDITIONAL TYPES
 
 // MAPPED TYPES
