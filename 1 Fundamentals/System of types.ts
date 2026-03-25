@@ -70,6 +70,14 @@ type ValidacaoDeEntrada<T> = T extends string ? string : number;
 const entrada1: ValidacaoDeEntrada<string> = "IA"; // O tipo é string
 const entrada2: ValidacaoDeEntrada<number> = 20; // O tipo é number
 
+// Utilizando o `never` para filtrar
+/*
+  Condicionais para remover tipos indesejados. Se a condição cair em `never`, o TypeScript ignora o tipo
+*/
+type ApenasNumber<T> = T extends number ? T : never;
+
+type Resultado = ApenasNumber<string | number | boolean>; // Resultado é apenas 'number', pois string e boolean caíram no 'never'
+
 // MAPPED TYPES
 
 // TEMPLATE LITERAL TYPES
