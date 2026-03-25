@@ -135,3 +135,22 @@ type Identificador = `id-${Status}`;
 
 let meuId: Identificador = "id-sucesso"; // Correto
 // leu meuId: Identificador = "id-pendente"; // Errado
+
+// ✨ Exemplo
+// Criação de "Getters"
+interface Usuario {
+  nome: string;
+  idade: number;
+}
+
+type GerarGetters<T> = {
+  [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
+};
+
+type UsuarioGetters = GerarGetters<Usuario>;
+/* Resultado: 
+{
+  getNome: () => string;
+  getIdade: () => number;
+}
+*/
