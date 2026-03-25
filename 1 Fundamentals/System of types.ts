@@ -64,6 +64,12 @@ logComprimento("String"); // String tem length
   Permite a criação de uma lógica dentro do sistemas de tipos, semelhante ao if/else. A sintaxe é a mesma do operador ternário em JavaScript: `T extends U ? X : Y`
 */
 
+// Filtro de tipos
+type ValidacaoDeEntrada<T> = T extends string ? string : number;
+
+const entrada1: ValidacaoDeEntrada<string> = "IA"; // O tipo é string
+const entrada2: ValidacaoDeEntrada<number> = 20; // O tipo é number
+
 // MAPPED TYPES
 
 // TEMPLATE LITERAL TYPES
