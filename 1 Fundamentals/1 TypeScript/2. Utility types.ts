@@ -23,6 +23,15 @@ const tarefa: TarefaPreview = {
 }
 
 // 👩🏾‍🚀 OMIT
+/*
+  É o inverso do omit, ele cria um tipo com todas as propriedades de T, exceto auqelas listadas em K
+*/
+type TarefaInfo = Omit<Tarefa, "description" | "createdAt">;
+
+const info: TarefaInfo = {
+    title: "Executar migration",
+    completed: true
+}
 
 // 👩🏾‍🚀 RECORD
 
