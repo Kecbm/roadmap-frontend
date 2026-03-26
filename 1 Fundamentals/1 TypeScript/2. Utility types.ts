@@ -72,3 +72,16 @@ function atualizarUsuario(id: number, fieldsToUpdate: Partial<Usuario>) {
 }
 
 // 👩🏾‍🚀 REQUIRED
+/*
+  É o inverso de partial, ele torna todas as propriedades de um tipo obrigatórias. Usa o modificados `-?` nas propriedades
+*/
+interface Propriedades {
+    title?: string;
+    onHover?: () => void;
+}
+
+// O tipo resultate é: { title: string; onHover: () => void; }
+const todasAsPropriedades: Required<Propriedades> = {
+    title: "Título",
+    onHover: () => console.log("Título hovered")
+};
