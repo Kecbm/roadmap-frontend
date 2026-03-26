@@ -4,6 +4,23 @@
 */
 
 // 👩🏾‍🚀 PICK
+/*
+  Permite criar um novo tipo, selecionando apenas algumas propriedades de um tipo já existente
+*/
+interface Tarefa {
+    title: string;
+    description: string;
+    completed: boolean;
+    createdAt: number;
+}
+
+// Cria um tipo apenas com 'title' e 'completed'
+type TarefaPreview = Pick<Tarefa, "title" | "completed">;
+
+const tarefa: TarefaPreview = {
+    title: "Refatoração",
+    completed: false
+}
 
 // 👩🏾‍🚀 OMIT
 
