@@ -34,6 +34,26 @@ const info: TarefaInfo = {
 }
 
 // 👩🏾‍🚀 RECORD
+/*
+  É usado para mapear as propriedades de um tipo para outro.
+
+  `Record(K, T)`
+
+  - K (Keys): Define quais são as chaves (string, number ou symbol)
+  - T (Type): Define qua; será o tipo de valor de cada chave
+*/
+type Paginas = "home" | "about" | "contact";
+
+interface PaginaInfo {
+    title: string;
+}
+
+// Cria um objeto onde as chaves são as páginas e o valor é o PageInfo
+const nav: Record<Paginas, PaginaInfo> = {
+    home: { title: "Início" },
+    about: { title: "Sobre nós" },
+    contact: { title: "Contato" },
+} 
 
 // 👩🏾‍🚀 PARTIAL
 
