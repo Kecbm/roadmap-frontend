@@ -56,5 +56,19 @@ const nav: Record<Paginas, PaginaInfo> = {
 } 
 
 // 👩🏾‍🚀 PARTIAL
+/*
+  Transforma as propriedades de um tipo T em opcionais. Adiciona o modificados `?` a elas
+*/
+interface Usuario {
+    id: number;
+    name: string;
+    email: string;
+}
+
+// Em funções de update, não é necessário enviar o objeto inteiro, apenas alguns campos
+// O tipo resultante é: { id?: number; name?: string; email?: string; }
+function atualizarUsuario(id: number, fieldsToUpdate: Partial<Usuario>) {
+    // Lógica de update
+}
 
 // 👩🏾‍🚀 REQUIRED
