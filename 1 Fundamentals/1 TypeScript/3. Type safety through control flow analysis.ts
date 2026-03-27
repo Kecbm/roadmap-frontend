@@ -20,5 +20,30 @@ if (ehPassaro(pet)) {
 }
 
 // 👩🏾‍🚀 Discriminated unions
+/*
+  Criar tipos que compartilham uma identidade comum
+*/
+interface Sucesso {
+    status: "sucesso";
+    dados: string[];
+}
+
+interface Erro {
+    status: "erro";
+    mensagem: string;
+}
+
+type Resposta = Sucesso | Erro;
+
+function tratarResposta(res: Resposta) {
+    switch (res.status) {
+        case "sucesso":
+            console.log(res.dados) // O TS sabe que existe 'dados'
+            break
+        case "erro":
+            console.warn(res.mensagem) // O TS sabe que existe 'mensagem'
+            break
+    }
+}
 
 // 👩🏾‍🚀 Type narrowing
