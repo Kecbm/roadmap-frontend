@@ -47,3 +47,14 @@ function tratarResposta(res: Resposta) {
 }
 
 // 👩🏾‍🚀 Type narrowing
+/*
+  É o ato de "afunilar" um tipo. Antes de aplicar métodos nativos em uma variável, o TS faz uma validação de que ela realmente tem aquele tipo no momento
+*/
+function repetir(valor: string | number) {
+    if (typeof valor === "string") {
+        // O tipo foi "estreitado" para string
+        return valor.repeat(3)
+    }
+    // Se chegou aqui, o TS sabe que 'valor' é number
+    return valor * 3;
+}
