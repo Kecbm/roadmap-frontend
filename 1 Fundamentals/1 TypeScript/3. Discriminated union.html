@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo: União Discriminada</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f4f7f6; margin: 0; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+        .display { min-height: 60px; margin-bottom: 1.5rem; padding: 1rem; border: 1px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold; }
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 10px; cursor: pointer; border: none; border-radius: 6px; transition: 0.2s; font-weight: bold; color: white; }
+        .btn-idle { background-color: #95a5a6; }
+        .btn-loading { background-color: #3498db; }
+        .btn-success { background-color: #2ecc71; }
+        .btn-error { background-color: #e74c3c; }
+        button:hover { opacity: 0.8; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>Status da Requisição</h3>
+        <div id="display" class="display">Clique em um botão abaixo</div>
+        
+        <div class="controls">
+            <button class="btn-idle" onclick="atualizarInterface({ status: 'parado' })">Parado</button>
+            <button class="btn-loading" onclick="atualizarInterface({ status: 'carregando' })">Carregando</button>
+            <button class="btn-success" onclick="atualizarInterface({ status: 'sucesso', dados: ['React', 'TypeScript', 'Node'] })">Sucesso</button>
+            <button class="btn-error" onclick="atualizarInterface({ status: 'erro', mensagem: 'Falha na conexão com o servidor' })">Erro</button>
+        </div>
+    </div>
+
+    <script>
+        function atualizarInterface(estado) {
+            const display = document.getElementById('display');
+            
+            let conteudo = "";
+
+            switch (estado.status) {
+                case "parado":
+                    conteudo = "⏸️ Aguardando comando...";
+                    break;
+                    
+                case "carregando":
+                    conteudo = "🔄 Buscando dados no servidor...";
+                    break;
+                    
+                case "sucesso":
+                    conteudo = `✅ Lista: ${estado.dados.join(", ")}`;
+                    break;
+                    
+                case "erro":
+                    conteudo = `❌ Erro: ${estado.mensagem}`;
+                    break;
+                
+                default:
+                    conteudo = "Estado desconhecido";
+            }
+
+            display.innerText = conteudo;
+        }
+    </script>
+</body>
+</html>
