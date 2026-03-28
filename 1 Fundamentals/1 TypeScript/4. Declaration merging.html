@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Module Augmentation (Express)</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f4f7f6; margin: 0; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; width: 380px; }
+        .display { min-height: 60px; margin-bottom: 1.5rem; padding: 1rem; border: 1px dashed #ccc; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #333; font-weight: bold; gap: 4px; }
+        .display span { font-size: 0.85rem; font-weight: normal; color: #666; }
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 10px; cursor: pointer; border: none; border-radius: 6px; transition: 0.2s; font-weight: bold; color: white; }
+        .btn-admin { background-color: #8e44ad; }
+        .btn-user  { background-color: #3498db; }
+        .btn-logout { background-color: #95a5a6; grid-column: span 2; }
+        button:hover { opacity: 0.8; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>Auth Middleware Simulation</h3>
+        <div id="display" class="display">
+            Click a button to simulate a request
+        </div>
+
+        <div class="controls">
+            <button class="btn-admin" onclick="simulateRequest('admin')">Login as Admin</button>
+            <button class="btn-user"  onclick="simulateRequest('user')">Login as User</button>
+            <button class="btn-logout" onclick="simulateRequest(null)">Logout (no user)</button>
+        </div>
+    </div>
+
+    <script>
+        function simulateRequest(role) {
+            const display = document.getElementById('display');
+
+            const users = {
+                admin: { id: "123", role: "admin" },
+                user:  { id: "456", role: "user" }
+            };
+
+            const req = {};
+            if (role) {
+                req.user = users[role];
+            }
+
+            let message = "";
+            let detail = "";
+
+            if (!req.user) {
+                message = "⛔ Access denied";
+                detail = "req.user is undefined — no token provided";
+            } else if (req.user.role === "admin") {
+                message = "🛡️ Welcome, Administrator!";
+                detail = `req.user = { id: "${req.user.id}", role: "admin" }`;
+            } else {
+                message = "👋 Hello, User!";
+                detail = `req.user = { id: "${req.user.id}", role: "user" }`;
+            }
+
+            display.innerHTML = `${message}<span>${detail}</span>`;
+        }
+    </script>
+</body>
+</html>
