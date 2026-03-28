@@ -32,3 +32,43 @@ declare module "nome-da-biblioteca" {
         novaPropriedade: string;
     }
 }
+
+// 🪐 EXEMPLO PRÁTICO
+/*
+  Estamos criando um middleware de autenticação com o Express, e vamos modificar o objeto `req` para que ele tenha a propriedade `user` com os dados do usuário logado
+*/
+// ☄️ Passo 1: o arquivo de definição `types/express.d.ts`
+// Aumentamos o módulo do Express para incluir o modelo de usuário
+// Importamos o tipo original
+import { Request } from 'express';
+
+declare module 'express' {
+    // O TS vai mesclar essa interface com a interface Request original do Express
+    export interface Request {
+        user?: {
+            id: string;
+            role: 'admin' | 'user'
+        }
+    }
+}
+
+// 🔭 Passo 2: utilização no código `server.ts`
+// Agora o TS não vai reclamar quando acessar `req.user`
+import express, { Request, Response } from 'express';
+
+const app = express();
+
+app.use((req: Request, res: Response, next) => {
+    // Sem o module agmentation a linha de baixo daria erro:
+    // "Property 'user' does not exist on type 'Request'"
+    req.user = { id: "123", role: "admin" }
+    next();
+});
+
+app.get('/', (req: Request, res: Response) => {
+    if (req.user?.role === "admin") {
+        res.send("Bem-vindo, Administrador!");
+    } else {
+        res.send("Olá Usuário!");
+    }
+});
