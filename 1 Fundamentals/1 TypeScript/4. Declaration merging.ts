@@ -21,3 +21,14 @@ const pessoa: Usuario = {
 // Funções e namespaces: também podem ser mesclados, é possivel adicionar propriedades a uma função declarando um namespace com o mesmo nome dela
 
 // 👩🏾‍🚀 MODULE AGMENTATION
+/*
+  É uma extenssão do declaration merging aplicada a módulos externos (arquivos ou bibliotecas). Utilizado quando é necessário adicionar propriedades ao código de terceiros
+*/
+// Para aumentar um módulo é necessário utilizar a palavra-chave `declare module` seguido pelo nome do pacote
+import "nome-da-biblioteca"
+
+declare module "nome-da-biblioteca" {
+    export interface InterfaceExistente {
+        novaPropriedade: string;
+    }
+}
