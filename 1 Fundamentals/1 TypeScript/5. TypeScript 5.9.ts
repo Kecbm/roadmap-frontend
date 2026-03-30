@@ -29,3 +29,26 @@ function criarUsuarios<const T extends string[]>(nomes: T) {
 
 const users = criarUsuarios(["Alice", "Bob"])
 // O tipo de 'users' não é string[], é exatamente ["Alice", "Bob"]
+
+// 🪐 EXEMPLO PRÁTICO
+/*
+  Sistema para onde o TS vai validar as rotas de uma aplicação e "decorar" o nome de cada rota para fornecer auto-complete
+*/
+type RouteConfig = {
+    path: string;
+    role: "admin" | "user"
+}
+
+// Usamos <const T> para capturar os nomes exatos das rotas
+function defineRoutes<const T extends Record<string, RouteConfig>>(config: T) {
+    return config;
+}
+
+const myAppRoutes = defineRoutes({
+    home: { path: "/", role: "user" },
+    dashboard: { path: "/admin/panel", role: "admin" }
+} satisfies Record<string, RouteConfig>);
+
+// O TS agora sabe tudo sobre as rotas
+const path = myAppRoutes.dashboard.path; // O tipo é "/admin/panel"
+const role = myAppRoutes.home.role; // O tipo é "user"
