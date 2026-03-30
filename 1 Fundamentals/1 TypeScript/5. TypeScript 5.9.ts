@@ -17,3 +17,15 @@ const paleta = {
 paleta.primaria.toUpperCase();
 
 // Sem o `satisfies` o TS daria erro falando que 'primária' poderia ser um objeto RGB
+
+// 👩🏾‍🚀 CONST TYPE PARAMETERS
+/*
+  Tem a função de "avisar" a função para ela olhar os argumentos da forma mais específica e literal possível
+*/
+// O 'const' ante do T força o TS a ler os valores reais, não apenas o tipo geral
+function criarUsuarios<const T extends string[]>(nomes: T) {
+    return nomes;
+}
+
+const users = criarUsuarios(["Alice", "Bob"])
+// O tipo de 'users' não é string[], é exatamente ["Alice", "Bob"]
