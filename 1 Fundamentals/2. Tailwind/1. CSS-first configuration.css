@@ -2,3 +2,8 @@
 /*
   o Tailwind CSS v4.0 trouxe uma mudança de pardigma chamada "CSS-first". Nas versões anteriores, quase toda a configuração era feita em um arquivo JavaScript (`tailwind.config.js`). Na v4 o motor foi reconstuído para que o próprio CSS seja a "fonte da verdade"
 */
+
+/* 👩🏾‍🚀 O fim do `tailwind.config.css` */
+/*
+    Agora não é necessário mais um arquivo JS para definir a estilização. O Tailwind agora lê as Variáveis Nativas do CSS dentro do seu arquivo principal
+*/
