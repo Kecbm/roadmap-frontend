@@ -3,7 +3,24 @@
   o Tailwind CSS v4.0 trouxe uma mudança de pardigma chamada "CSS-first". Nas versões anteriores, quase toda a configuração era feita em um arquivo JavaScript (`tailwind.config.js`). Na v4 o motor foi reconstuído para que o próprio CSS seja a "fonte da verdade"
 */
 
-/* 👩🏾‍🚀 O fim do `tailwind.config.css` */
+/* 👩🏾‍🚀 O FIM DO `tailwind.config.css` */
 /*
     Agora não é necessário mais um arquivo JS para definir a estilização. O Tailwind agora lê as Variáveis Nativas do CSS dentro do seu arquivo principal
 */
+
+/* 👩🏾‍🚀 A DIRETIVA `@theme` */
+/*
+    O Tailwind v4 monitora o que você escreve dentro de `@theme` e mapeia para utilitários
+*/
+@import "tailwindcss";
+
+@theme {
+    /* Isso cria automaticamente a classe 'text-brand' e 'bg-brand' */
+    --color-brand: #3b82f6;
+
+    /* Isso cria 'font-display' */
+    --font-display: "Inter", sans-serif;
+
+    /* Isso sobrescreve ou adiciona espaçamentos */
+    --spacing-128: 32rem;
+}
