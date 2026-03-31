@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: CSS-First Configuration</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-brand: #3b82f6;
+            --font-display: "Georgia", serif;
+            --spacing-128: 32rem;
+        }
+
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f4f7f6; margin: 0; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; width: 380px; }
+        .card h3 { margin-bottom: 1.5rem; }
+        .display { min-height: 60px; margin-bottom: 1.5rem; padding: 1rem; border: 1px dashed #ccc; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #333; font-weight: bold; gap: 4px; }
+        .display span { font-size: 0.85rem; font-weight: normal; color: #666; }
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 10px; cursor: pointer; border: none; border-radius: 6px; transition: 0.2s; font-weight: bold; color: white; }
+        .btn-color    { background-color: #3b82f6; }
+        .btn-font     { background-color: #8e44ad; }
+        .btn-spacing  { background-color: #2ecc71; }
+        .btn-reset    { background-color: #95a5a6; }
+        button:hover  { opacity: 0.8; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>@theme — CSS-First Config</h3>
+        <div id="display" class="display">
+            Click a button to see each variable in action
+            <span>Tailwind v4 — no tailwind.config.js needed</span>
+        </div>
+
+        <div class="controls">
+            <button class="btn-color"   onclick="mostrar('color')">--color-brand</button>
+            <button class="btn-font"    onclick="mostrar('font')">--font-display</button>
+            <button class="btn-spacing" onclick="mostrar('spacing')">--spacing-128</button>
+            <button class="btn-reset"   onclick="mostrar('reset')">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        function mostrar(tipo) {
+            const display = document.getElementById('display');
+
+            switch (tipo) {
+                case 'color':
+                    display.style.background = '#eff6ff';
+                    display.style.borderColor = '#3b82f6';
+                    display.innerHTML = `
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <span style="background:#3b82f6; color:white; padding:6px 16px; border-radius:6px; font-size:1rem; font-weight:bold;">bg-brand</span>
+                            <span style="color:#3b82f6; font-size:1.1rem; font-weight:bold;">text-brand</span>
+                        </div>
+                        <span>--color-brand: #3b82f6 → generates color utility classes</span>`;
+                    break;
+
+                case 'font':
+                    display.style.background = '#faf5ff';
+                    display.style.borderColor = '#8e44ad';
+                    display.innerHTML = `
+                        <div style="display:flex; flex-direction:column; gap:6px; width:100%;">
+                            <span style="font-family: Georgia, serif; font-size:1.3rem; font-weight:bold; color:#1a1a1a;">font-display: Georgia, serif</span>
+                            <span style="font-family: sans-serif; font-size:1.3rem; font-weight:bold; color:#aaa;">font-sans: default sans-serif</span>
+                        </div>
+                        <span>--font-display: "Georgia" → generates font-display class</span>`;
+                    break;
+
+                case 'spacing':
+                    display.style.background = '#f0fdf4';
+                    display.style.borderColor = '#2ecc71';
+                    display.innerHTML = `
+                        <div style="width:100%; background:#bbf7d0; border-radius:6px; padding:8px 0; text-align:center; font-size:0.95rem; color:#166534; font-weight:bold;">
+                            ← w-128 = 32rem = 512px →
+                        </div>
+                        <span>--spacing-128: 32rem → generates w-128, p-128, mt-128...</span>`;
+                    break;
+
+                case 'reset':
+                    display.style.background = '';
+                    display.style.borderColor = '';
+                    display.innerHTML = `
+                        Click a button to see each variable in action
+                        <span>Tailwind v4 — no tailwind.config.js needed</span>`;
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
