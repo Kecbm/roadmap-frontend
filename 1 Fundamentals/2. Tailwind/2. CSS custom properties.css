@@ -8,3 +8,13 @@
   - Transforma elas em classes utilitárias ( `--color-primary` vira `text-primary`)
   - Esses tokens são acessáveis via CSS puro, no JS ou em qualquer lugar do navegador, usando `var(--color-primary)`
 */
+
+/* 👩🏾‍🚀 NAMING CONVENTION */
+/*
+  o tailwind v4 usa um sistema de prefixos inteligentes dentro do `@theme`. Quando definimos uma variável com um prefixo específico, ele entende a qual "categoria" de utilitário ela pertence:
+
+  | Prefixo | Categoria de utilitário | Exemplo no CSS | Coluna 4lasse gerada |
+  |----------|----------|----------|----------|
+  | --color-*  | Cores (text, bg, border) | --color-sky: #0ea5e9; | bg-sky, text-sky |
+
+*/
