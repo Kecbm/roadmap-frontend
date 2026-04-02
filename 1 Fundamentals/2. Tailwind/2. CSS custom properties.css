@@ -16,5 +16,10 @@
   | Prefixo | Categoria de utilitário | Exemplo no CSS | Coluna 4lasse gerada |
   |----------|----------|----------|----------|
   | --color-*  | Cores (text, bg, border) | --color-sky: #0ea5e9; | bg-sky, text-sky |
+*/
 
+/* 👩🏾‍🚀 TOKENS DINÂMICOS E O OPERADOR DE OPACIDADE */
+/*
+  Uma das maiores evoluções da V4 é que ao definir uma cor via CSS Variable, o tailwind permite que você altere a opacidade dela sem nenhuma configuração extra.
+  Se definimos `--color-primary: #3b82f6`, é possivel utilizar `bg-primary/50` no HTML e o tailwind irá converter o hexadecimal para RGB/HSL e aplicar a opacidade em tempo de execução
 */
