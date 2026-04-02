@@ -1,0 +1,10 @@
+/* 🚀 CSS CUSTOM PROPERTIES */
+
+/* 👩🏾‍🚀 DESIGN TOKENS */
+/*
+  No Tailwind V4, os design tokens são variáveis CSS nativas.
+
+  - O tailwind lê as variáveis do bloco `@theme`
+  - Transforma elas em classes utilitárias ( `--color-primary` vira `text-primary`)
+  - Esses tokens são acessáveis via CSS puro, no JS ou em qualquer lugar do navegador, usando `var(--color-primary)`
+*/
