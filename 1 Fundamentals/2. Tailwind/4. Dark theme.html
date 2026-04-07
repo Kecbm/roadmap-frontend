@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Dark Theme</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            /* 1. Tokens do modo CLARO (padrão) */
+            --color-page-bg: #ffffff;
+            --color-card-bg: #f8fafc;
+            --color-text-main: #1e293b;
+            --color-text-muted: #64748b;
+            --color-accent: #6366f1;
+            --color-border-ui: #e2e8f0;
+        }
+
+        /*
+         * 2. Tokens do modo ESCURO
+         * O @variant dark dentro do @theme só funciona com o CLI do Tailwind.
+         * No browser CDN, sobrescrevemos as mesmas variáveis num seletor .dark —
+         * o CSS cascade garante que os utilitários (bg-accent, text-text-main, etc.)
+         * automaticamente reflitam os novos valores.
+         */
+        .dark {
+            --color-page-bg: #0f172a;
+            --color-card-bg: #1e293b;
+            --color-text-main: #f8fafc;
+            --color-text-muted: #94a3b8;
+            --color-accent: #818cf8;
+            --color-border-ui: #334155;
+        }
+    </style>
+</head>
+<body class="bg-page-bg min-h-screen flex flex-col items-center justify-center p-8 transition-colors duration-300">
+
+    <!-- Toggle sol/lua -->
+    <label class="mb-8 flex items-center cursor-pointer select-none">
+        <div class="relative">
+            <input type="checkbox" id="theme-toggle" class="sr-only" onchange="toggleDark(this)">
+            <div id="toggle-track" class="w-14 h-7 rounded-full transition-colors duration-300 bg-border-ui"></div>
+            <div id="toggle-thumb" class="absolute top-1 left-1 w-5 h-5 rounded-full flex items-center justify-center text-sm transition-all duration-300 bg-accent">
+                <span id="toggle-icon">☀️</span>
+            </div>
+        </div>
+    </label>
+
+    <!-- Card adaptável -->
+    <div class="bg-card-bg border border-border-ui rounded-2xl p-6 w-80 shadow-sm transition-colors duration-300">
+
+        <!-- Header -->
+        <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-white font-bold text-lg shrink-0">
+                KM
+            </div>
+            <div>
+                <h2 class="text-text-main font-bold text-lg leading-tight">Klecianny Melo</h2>
+                <p class="text-text-muted text-sm">Frontend Developer</p>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-border-ui my-4"></div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-2 text-center mb-4">
+            <div>
+                <p class="text-text-main font-bold text-xl">128</p>
+                <p class="text-text-muted text-xs">Projects</p>
+            </div>
+            <div>
+                <p class="text-text-main font-bold text-xl">4.8k</p>
+                <p class="text-text-muted text-xs">Commits</p>
+            </div>
+            <div>
+                <p class="text-text-main font-bold text-xl">92</p>
+                <p class="text-text-muted text-xs">Followers</p>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-border-ui my-4"></div>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-5">
+            <span class="bg-accent/10 text-accent text-xs px-3 py-1 rounded-full font-medium">React</span>
+            <span class="bg-accent/10 text-accent text-xs px-3 py-1 rounded-full font-medium">Tailwind</span>
+            <span class="bg-accent/10 text-accent text-xs px-3 py-1 rounded-full font-medium">TypeScript</span>
+        </div>
+
+        <!-- Action button -->
+        <button class="w-full bg-accent text-white py-2 rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity cursor-pointer">
+            Follow
+        </button>
+    </div>
+
+    <script>
+        function toggleDark(checkbox) {
+            const isDark = checkbox.checked;
+            document.documentElement.classList.toggle('dark', isDark);
+            document.getElementById('toggle-icon').textContent = isDark ? '🌙' : '☀️';
+            const thumb = document.getElementById('toggle-thumb');
+            thumb.style.transform = isDark ? 'translateX(28px)' : 'translateX(0)';
+        }
+    </script>
+</body>
+</html>
