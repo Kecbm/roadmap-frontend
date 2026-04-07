@@ -16,3 +16,12 @@
 
   No bloco `@theme`, você pode redefinir as mesmas variáveis para o cenário escuro.
 */
+
+/* 👩🏾‍🚀 ESTRUTURA MINUCIOSA NO CSS */
+/*
+  A mágica acontece quando organizamos as variáveis por intenção e não por cor bruta
+
+  1. Variáveis globais: definem o "esqueleto" de cores
+  2. Bloco `@theme`: mapeia essas variáveis para utilitários do tailwind
+  3. Sobrescrita dark: altera os valores globais quando o tema muda
+*/
