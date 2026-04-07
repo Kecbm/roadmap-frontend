@@ -6,3 +6,18 @@
 
   A composição permite que você trate as classes como dados (elements de uma lista) em vez de apenas texto.
 */
+
+/* 👩🏾‍🚀 O FUNCIONAMENTO DO TRIO: ARRAY + FILTER + JOIN */
+/*
+  Essa técnica resolve o problema das "strings sujas" (aquelas que ficam com espaços extras ou valores `undefined` quando uma condição é falsa)
+
+  A) O ARRAY `[]`
+  Colocamos todas as classes dentro de uma lista. Isso permite que cada classe (ou grupo de classes) seja uma entrada independente
+
+  B) O FILTER `.filter(Boolean)`
+  Quando escrevemos uma condicional no JS: `isPrimary ? 'bg-blue-500' : undefined`
+  Se `isPrimary` for falso, o valor será `undefined`. O `.filter(Boolean)` remove automaticamente tudo que for "falsy" (`undefined`, `null`, `false`, `""`), deixando apenas as classes reais
+
+  C) O JOIN `.join(" ")`
+  No final, o array precisa voltar a ser uma string única para o HTML entender. O `.join(" ")` junta todos os elementos da lista colocando um espaço entre eles
+*/
