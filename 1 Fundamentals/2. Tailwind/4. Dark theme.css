@@ -1,0 +1,8 @@
+/* 🚀 DARK THEME COM CUSTOM PROPERTIES */
+
+/* 👩🏾‍🚀 O CONCEITO: INVERSÃO DE VALORES */
+/*
+  No tailwind v4 não definimos "esta cor é branca no light e preta no dark" dentro do HTML. Utilizamos um Token de Design (ex: `--color-surface`) que aponta para um valor no modo claro e muda seu valor no modo escuro.
+
+  O HTML permanece o mesmo: `class="bg-surface"`. O que muda é apenas o valor que a variável `--color-surface` carrega no sistema
+*/
