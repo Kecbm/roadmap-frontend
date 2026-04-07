@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Class Composition</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background-color: #f4f7f6; margin: 0; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; width: 420px; }
+        .card h3 { margin-bottom: 1.5rem; }
+        .display { min-height: 80px; margin-bottom: 1.5rem; padding: 1rem; border: 1px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .section-label { font-size: 0.75rem; font-weight: bold; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; text-align: left; }
+        .controls { display: flex; flex-direction: column; gap: 14px; }
+        .controls-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: stretch; }
+        button.ctrl { padding: 10px; cursor: pointer; border: none; border-radius: 6px; transition: 0.2s; font-weight: bold; color: white; }
+        .btn-variant  { background-color: #6366f1; }
+        .btn-danger   { background-color: #ef4444; }
+        .btn-disabled { background-color: #f59e0b; }
+        .btn-reset    { background-color: #95a5a6; }
+        .btn-active   { outline: 3px solid #1e1b4b; outline-offset: 2px; }
+        button.ctrl:hover { opacity: 0.8; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>Array + Filter + Join — Class Composition</h3>
+
+        <div class="display">
+            <button id="preview-btn">Preview Button</button>
+        </div>
+
+        <div class="controls">
+            <div>
+                <div class="section-label">Variant</div>
+                <div class="controls-row">
+                    <button class="ctrl btn-variant btn-active" id="btn-primary"   onclick="setVariant('primary')"   style="font-size: 0.8rem;">variant: "primary"</button>
+                    <button class="ctrl btn-variant"            id="btn-secondary" onclick="setVariant('secondary')" style="font-size: 0.8rem;">variant: "secondary"</button>
+                </div>
+            </div>
+            <div>
+                <div class="section-label">Modifiers</div>
+                <div class="controls-row">
+                    <button class="ctrl btn-danger"   id="btn-danger"   onclick="toggleDanger()">isDanger: false</button>
+                    <button class="ctrl btn-disabled" id="btn-disabled" onclick="toggleDisabled()">isDisabled: false</button>
+                </div>
+            </div>
+            <div>
+                <button class="ctrl btn-reset" style="width:100%;" onclick="resetAll()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let state = { variant: "primary", isDanger: false, isDisabled: false };
+
+        const STYLES = {
+            base: {
+                padding: "8px 24px",
+                borderRadius: "8px",
+                fontWeight: "bold",
+                border: "2px solid",
+                transition: "transform 0.3s, opacity 0.3s",
+                cursor: "pointer",
+                fontSize: "1rem",
+            },
+            primary:   { background: "#4f46e5", borderColor: "#4f46e5", color: "white" },
+            secondary: { background: "transparent", borderColor: "#d1d5db", color: "#374151" },
+            danger:    { background: "#dc2626", borderColor: "#dc2626", color: "white" },
+            disabled:  { opacity: "0.5", cursor: "not-allowed" },
+        };
+
+        function update() {
+            const { variant, isDanger, isDisabled } = state;
+            const btn = document.getElementById("preview-btn");
+
+            const variantStyle = isDanger ? STYLES.danger : (variant === "primary" ? STYLES.primary : STYLES.secondary);
+            const disabledStyle = isDisabled ? STYLES.disabled : {};
+
+            Object.assign(btn.style, STYLES.base, variantStyle, disabledStyle);
+
+            // reset opacity/cursor when not disabled
+            if (!isDisabled) { btn.style.opacity = "1"; btn.style.cursor = "pointer"; }
+
+            // hover effect only when not disabled
+            btn.onmouseenter = isDisabled ? null : () => { btn.style.transform = "scale(1.05)"; };
+            btn.onmouseleave = isDisabled ? null : () => { btn.style.transform = "scale(1)"; };
+            btn.onmousedown  = isDisabled ? null : () => { btn.style.transform = "scale(0.95)"; };
+            btn.onmouseup    = isDisabled ? null : () => { btn.style.transform = "scale(1.05)"; };
+
+            // control buttons feedback
+            document.getElementById("btn-primary").classList.toggle("btn-active", variant === "primary");
+            document.getElementById("btn-secondary").classList.toggle("btn-active", variant === "secondary");
+
+            const dangerCtrl = document.getElementById("btn-danger");
+            dangerCtrl.textContent = `isDanger: ${isDanger}`;
+            dangerCtrl.style.outline = isDanger ? "3px solid #7f1d1d" : "";
+            dangerCtrl.style.outlineOffset = isDanger ? "2px" : "";
+
+            const disabledCtrl = document.getElementById("btn-disabled");
+            disabledCtrl.textContent = `isDisabled: ${isDisabled}`;
+            disabledCtrl.style.outline = isDisabled ? "3px solid #78350f" : "";
+            disabledCtrl.style.outlineOffset = isDisabled ? "2px" : "";
+        }
+
+        function setVariant(v)    { state.variant = v;                    update(); }
+        function toggleDanger()   { state.isDanger = !state.isDanger;     update(); }
+        function toggleDisabled() { state.isDisabled = !state.isDisabled; update(); }
+        function resetAll()       { state = { variant: "primary", isDanger: false, isDisabled: false }; update(); }
+
+        update();
+    </script>
+</body>
+</html>
