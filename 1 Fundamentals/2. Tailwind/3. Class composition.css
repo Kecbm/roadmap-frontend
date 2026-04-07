@@ -1,0 +1,8 @@
+/* 🚀 CLASS COMPOSITION */
+
+/* 👩🏾‍🚀 O CONCEITO DE COMPOSIÇÃO DE CLASSES */
+/*
+  No Tailwind, é comum um elemento possuir 10 ou 15 classes. Escrevê-las como uma string gigante torna o código difícil de ler e impossível de aplicar lógica condicional.
+
+  A composição permite que você trate as classes como dados (elements de uma lista) em vez de apenas texto.
+*/
