@@ -21,3 +21,11 @@
   C) O JOIN `.join(" ")`
   No final, o array precisa voltar a ser uma string única para o HTML entender. O `.join(" ")` junta todos os elementos da lista colocando um espaço entre eles
 */
+
+/* 👩🏾‍🚀 TAILWIND MERGE */
+/*
+  O `filter().join()` não resolve o conflito de classes (ex: ter `p-4` e `p-8` ao mesmo tempo). Para projetos grandes, é uma boa prática usar o padrão:
+  `twMerge(classes.filter(Boolean).join(" "))`
+
+  O `twMerge`entende que se você adicionou uma classe de "Erro", ela deve ganhar da classe padrão
+*/
