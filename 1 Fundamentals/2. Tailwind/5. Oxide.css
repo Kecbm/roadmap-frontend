@@ -6,3 +6,21 @@
 
   O oxide utiliza uma linguagem de baixo nível para processar arquivos e gerar estilos
 */
+
+/* 👩🏾‍🚀 COMO ELE FUNCIONA: OS PILARES TÉCNICOS */
+/*
+  A) COMPILAÇÃO EM RUST (VELOCIDADE)
+  Ao migrar para Rust, o tailwind v4 consegue:
+  - Escanear arquivos de projeto até 10x mais rápido
+  - Gerar o CSS final quase instantaneamente, reduzindo o tempo de HMR (Hot Module Replacement) no seu navegador
+
+  B) MOTOR "LIGHTNING CSS" INTEGRADO
+  O oxide usa internamente o Lightning CSS para:
+  - Remover CSS duplicado
+  - Autoprefixing: adiciona automaticamente prefixos como `-webkit-` ou `-moz-` onde é necessário para navegadores antigos
+  - Minificação: o arquivo final já sai comprimido com máxima eficiência
+
+  C) ESCANEAMENTO UNIFICADO E INTELIGENTE
+  - Detecta automaticamente as extensões de arquivos relevantes
+  - Usa um sistema de Incremental Builds, se você mudar uma linha de um componente, ele reprocessa apenas o que foi alterado, em vez de ler todo o projeto novamente
+*/
