@@ -13,9 +13,16 @@
 
 # Fase 1: Fundamentos (Semanas 1-3)
 
-### TypeScript Avancado
+## TypeScript Avancado
 - ~~✅ Sistema de tipos: generics, conditional types, mapped types, template literal types~~
 - ~~✅ Utility types: `Pick`, `Omit`, `Record`, `Partial`, `Required`~~
 - ~~✅ Type Safety through Control Flow Analysis: Type guards, discriminated unions, type narrowing~~
 - ~~✅ Declaration merging e module augmentation~~
 - ~~✅ Recursos do TypeScript 5.9 - Type Inference and Narrowing Control: satisfies operator, const type parameters~~
+
+## Tailwind CSS 4
+- ~~✅ CSS-first configuration (sem tailwind.config.js)~~
+- ~~✅ Design tokens via CSS custom properties~~
+- ~~✅ Composicao de classes com pattern array + filter + join~~
+- ~~✅ Dark theme com custom properties~~
+- ~~✅ Nova engine do Tailwind v4 (Oxide)~~
