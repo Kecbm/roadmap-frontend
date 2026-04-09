@@ -26,3 +26,5 @@
 - ~~✅ Composicao de classes com pattern array + filter + join~~
 - ~~✅ Dark theme com custom properties~~
 - ~~✅ Nova engine do Tailwind v4 (Oxide)~~
+
+---
