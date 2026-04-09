@@ -24,3 +24,6 @@
   - Detecta automaticamente as extensões de arquivos relevantes
   - Usa um sistema de Incremental Builds, se você mudar uma linha de um componente, ele reprocessa apenas o que foi alterado, em vez de ler todo o projeto novamente
 */
+
+/* 🪐 EXEMPLO PRÁTICO */
+/* ☄️ Nos exemplos de HTML que usei `<script src="https://unpkg.com/@tailwindcss/browser@4"></script>`, já estava acessando o oxide, por utilizar o tailwind v4 */
