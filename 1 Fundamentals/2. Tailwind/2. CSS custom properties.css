@@ -1,0 +1,28 @@
+/* 🚀 CSS CUSTOM PROPERTIES */
+
+/* 👩🏾‍🚀 DESIGN TOKENS */
+/*
+  No Tailwind V4, os design tokens são variáveis CSS nativas.
+
+  - O tailwind lê as variáveis do bloco `@theme`
+  - Transforma elas em classes utilitárias ( `--color-primary` vira `text-primary`)
+  - Esses tokens são acessáveis via CSS puro, no JS ou em qualquer lugar do navegador, usando `var(--color-primary)`
+*/
+
+/* 👩🏾‍🚀 NAMING CONVENTION */
+/*
+  o tailwind v4 usa um sistema de prefixos inteligentes dentro do `@theme`. Quando definimos uma variável com um prefixo específico, ele entende a qual "categoria" de utilitário ela pertence:
+
+  | Prefixo | Categoria de utilitário | Exemplo no CSS | Coluna 4lasse gerada |
+  |----------|----------|----------|----------|
+  | --color-*  | Cores (text, bg, border) | --color-sky: #0ea5e9; | bg-sky, text-sky |
+*/
+
+/* 👩🏾‍🚀 TOKENS DINÂMICOS E O OPERADOR DE OPACIDADE */
+/*
+  Uma das maiores evoluções da V4 é que ao definir uma cor via CSS Variable, o tailwind permite que você altere a opacidade dela sem nenhuma configuração extra.
+  Se definimos `--color-primary: #3b82f6`, é possivel utilizar `bg-primary/50` no HTML e o tailwind irá converter o hexadecimal para RGB/HSL e aplicar a opacidade em tempo de execução
+*/
+
+/* 🪐 EXEMPLO PRÁTICO */
+/* ☄️ Arquivo: `2. CSS custom properties.html` */
