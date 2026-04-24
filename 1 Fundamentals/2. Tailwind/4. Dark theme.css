@@ -1,0 +1,27 @@
+/* 🚀 DARK THEME COM CUSTOM PROPERTIES */
+
+/* 👩🏾‍🚀 O CONCEITO: INVERSÃO DE VALORES */
+/*
+  No tailwind v4 não definimos "esta cor é branca no light e preta no dark" dentro do HTML. Utilizamos um Token de Design (ex: `--color-surface`) que aponta para um valor no modo claro e muda seu valor no modo escuro.
+
+  O HTML permanece o mesmo: `class="bg-surface"`. O que muda é apenas o valor que a variável `--color-surface` carrega no sistema
+*/
+
+/* 👩🏾‍🚀 A DIRETIVA `@variant` E O SELETOR `media` */
+/*
+  O tailwind v4 facilita a detecção do tema do sistema do usuário ou de uma classe manual usando a lógica de variáveis dentro do CSS.
+
+  - Padrão do sistema: usa `@media (prefers-color-scheme: dark)`
+  - Padrão de classe: usa uma classe `.dark` no `<html>` ou `<body>`
+
+  No bloco `@theme`, você pode redefinir as mesmas variáveis para o cenário escuro.
+*/
+
+/* 👩🏾‍🚀 ESTRUTURA MINUCIOSA NO CSS */
+/*
+  A mágica acontece quando organizamos as variáveis por intenção e não por cor bruta
+
+  1. Variáveis globais: definem o "esqueleto" de cores
+  2. Bloco `@theme`: mapeia essas variáveis para utilitários do tailwind
+  3. Sobrescrita dark: altera os valores globais quando o tema muda
+*/
